@@ -50,3 +50,48 @@ class Stack {
         return temp.value;
     }
 }
+
+/* A Queue is similar to a stack, but it's behavior requires FIFO */
+
+//creating a queue with an array
+/*In a queue with an array, you can use a combo of .push (enqueue) and .shift() (dequeue)
+to create queue functionality */
+var q = [];
+q.push("First")
+q.push("Second")
+q.push("Third")
+console.log(q)
+q.shift();
+console.log(q)
+
+class Queue {
+    constructor() {
+        this.first = null;
+        this.last = null;
+        this.size = 0;
+    }
+
+    enqueue(value) {
+        var newNode = new Node(value)
+        if (!this.first) {
+            this.first = newNode;
+            this.last = newNode;
+        } else {
+            this.last.next = newNode;
+            this.last = newNode;
+        }
+        return ++this.size;
+    }
+
+    dequeue() {
+        if (!this.first) return null;
+        var temp = this.first;
+        if (this.first === this.last) {
+            this.last = null;
+        }
+        this.first = this.first.next;
+        this.size--;
+        return temp.value;
+    }
+}
+
